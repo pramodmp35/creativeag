@@ -1,0 +1,72 @@
+/* ============================================================
+   NAV ACTIVE STATE – Add to your CSS file
+   ============================================================ */
+
+/* ---- Desktop Nav Link – Active State ---- */
+.navlink.active {
+  color: #6b4a9e;
+}
+
+.navlink.active .navlink-text {
+  transform: translateY(-100%);
+}
+
+.navlink.active::after {
+  transform: translateY(-100%);
+}
+
+/* Underline for active link */
+.navlink.active::before {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #6b4a9e;
+  border-radius: 2px;
+  transition: width 0.45s var(--ease-premium);
+}
+
+/* ---- Sidebar Nav Link – Active State ---- */
+.navsidebarlink.active {
+  color: #6b4a9e;
+}
+
+.navsidebarlink.active .sidebar-link-text {
+  transform: translateY(-100%);
+}
+
+.navsidebarlink.active::after {
+  transform: translateY(-100%);
+}
+
+/* Underline for sidebar active link */
+.navsidebarlink.active::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #6b4a9e;
+  border-radius: 2px;
+  transition: width 0.45s var(--ease-premium);
+}
+
+/* ---- Light Theme Active State ---- */
+body.light-theme .navlink.active {
+  color: #5a3a85;
+}
+
+body.light-theme .navlink.active::before {
+  background: #5a3a85;
+}
+
+body.light-theme .navsidebarlink.active {
+  color: #5a3a85;
+}
+
+body.light-theme .navsidebarlink.active::before {
+  background: #5a3a85;
+}

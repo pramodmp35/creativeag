@@ -1,0 +1,1039 @@
+/* ============================================================
+          CSS CUSTOM PROPERTIES – Premium Palette
+          ============================================================ */
+:root {
+  --bg-dark: #0f0f0f;
+  --bg-sidebar: #111111;
+  --bg-sidebar-alt: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #8964c5;
+  --text-muted: rgba(137, 100, 197, 0.55);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-light: rgba(255, 255, 255, 0.15);
+  --border-social: rgba(255, 255, 255, 0.1);
+  --white: #ffffff;
+  --black: #0f0f0f;
+  --ease-premium: cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-premium: all 0.45s cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-fast: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  --sidebar-width: 420px;
+  --navbar-height: 90px;
+}
+
+/* ============================================================
+          RESET & BASE
+          ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  min-height: 200vh;
+  line-height: 1.5;
+}
+
+/* ============================================================
+          NAVBAR – Main Wrapper
+          ============================================================ */
+.navwrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1.5rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--navbar-height);
+  transition:
+    background 0.45s var(--ease-premium),
+    backdrop-filter 0.45s var(--ease-premium),
+    border-bottom 0.45s var(--ease-premium),
+    padding 0.45s var(--ease-premium),
+    height 0.45s var(--ease-premium);
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  will-change: background, backdrop-filter, border-bottom;
+}
+
+.navsticky {
+  background: rgba(15, 15, 15, 0.78);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 1rem 4rem;
+  height: 80px;
+}
+
+/* ============================================================
+          LOGO
+          ============================================================ */
+.navlogo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  z-index: 1001;
+}
+
+.navlogo img {
+  height: 100px;
+  width: auto;
+  transition:
+    height 0.45s var(--ease-premium),
+    opacity 0.45s var(--ease-premium);
+  cursor: pointer;
+  object-fit: contain;
+  will-change: height;
+}
+
+.navsticky .navlogo img {
+  height: 50px;
+}
+
+/* ============================================================
+          DESKTOP MENU
+          ============================================================ */
+.navmenu {
+  display: none;
+  gap: 3.2rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .navmenu {
+    display: flex;
+  }
+}
+
+.navlink {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  transition: color 0.45s var(--ease-premium);
+  padding: 4px 0;
+  line-height: 1.4;
+}
+
+.navlink:hover {
+  color: #6b4a9e;
+}
+
+.navlink .navlink-text {
+  display: inline-block;
+  transition: transform 0.45s var(--ease-premium);
+  will-change: transform;
+}
+
+.navlink:hover .navlink-text {
+  transform: translateY(-100%);
+}
+
+.navlink::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  color: #6b4a9e;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: transform 0.45s var(--ease-premium);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.navlink:hover::after {
+  transform: translateY(-100%);
+}
+
+/* ============================================================
+          DESKTOP LOGIN BUTTON – Premium Pill
+          ============================================================ */
+.navbutton {
+  display: none;
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 14px 28px;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1.5px solid var(--text-secondary);
+  border-radius: 50px;
+  letter-spacing: 0.06em;
+  transition: var(--transition-premium);
+  font-family:
+    "Inter",
+    -apple-system,
+    sans-serif;
+  white-space: nowrap;
+  will-change: background, color, border-color, transform;
+  position: relative;
+  overflow: hidden;
+  line-height: 1.2;
+  clip-path: none;
+}
+
+@media (min-width: 1024px) {
+  .navbutton {
+    display: inline-block;
+  }
+}
+
+.navbutton:hover {
+  background: var(--text-secondary);
+  color: var(--white);
+  border-color: var(--text-secondary);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px rgba(137, 100, 197, 0.3);
+}
+
+.navbutton:active {
+  transform: translateY(0);
+  transition: all 0.15s var(--ease-premium);
+}
+
+/* ============================================================
+          DARK MODE ICON
+          ============================================================ */
+.dark-mode-icon {
+  display: flex;
+  align-items: center;
+}
+
+.theme-icon {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--text-secondary);
+  transition: var(--transition-premium);
+  background: transparent;
+  border: 1px solid rgba(137, 100, 197, 0.2);
+}
+
+.theme-icon:hover {
+  background: rgba(137, 100, 197, 0.08);
+  border-color: var(--text-secondary);
+  transform: rotate(12deg);
+}
+
+.theme-icon .sun {
+  display: none;
+}
+
+body.light-theme .theme-icon .moon {
+  display: none;
+}
+
+body.light-theme .theme-icon .sun {
+  display: inline-block;
+}
+
+/* ============================================================
+          PREMIUM HAMBURGER – Hidden on desktop
+          ============================================================ */
+.navhamburger {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: background 0.45s var(--ease-premium);
+  background: transparent;
+  position: relative;
+  z-index: 1001;
+  flex-shrink: 0;
+}
+
+.navhamburger:hover {
+  background: rgba(137, 100, 197, 0.08);
+}
+
+.hamburger-lines {
+  position: relative;
+  width: 24px;
+  height: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+}
+
+.hamburger-line {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--text-secondary);
+  border-radius: 1px;
+  transition: var(--transition-premium);
+  transform-origin: center;
+  will-change: transform, opacity;
+  position: relative;
+}
+
+.navhamburger.active .hamburger-line:nth-child(1) {
+  transform: translateY(8.25px) rotate(45deg);
+}
+
+.navhamburger.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.navhamburger.active .hamburger-line:nth-child(3) {
+  transform: translateY(-8.25px) rotate(-45deg);
+}
+
+.navhamburger:hover .hamburger-line {
+  background: #6b4a9e;
+}
+
+/* ============================================================
+          SIDEBAR OVERLAY – Hidden on desktop
+          ============================================================ */
+.navoverlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: var(--sidebar-width);
+  height: 100%;
+  height: 100dvh;
+  background: var(--bg-sidebar);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-left: 1px solid var(--border-subtle);
+  transform: translateX(100%);
+  transition: transform 0.65s var(--ease-premium);
+  z-index: 2000;
+  padding: 3.5rem 2.8rem 2.5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow:
+    -20px 0 80px rgba(0, 0, 0, 0.55),
+    -4px 0 30px rgba(0, 0, 0, 0.3);
+  will-change: transform;
+}
+
+.navoverlay.active {
+  transform: translateX(0);
+}
+
+/* ============================================================
+          PREMIUM CLOSE BUTTON – Thin SVG X
+          ============================================================ */
+.navclose {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  transition: background 0.45s var(--ease-premium);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2001;
+}
+
+.navclose:hover {
+  background: rgba(137, 100, 197, 0.08);
+}
+
+.navclose svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--text-secondary);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: var(--transition-premium);
+  pointer-events: none;
+}
+
+.navclose:hover svg {
+  stroke: #6b4a9e;
+  transform: rotate(90deg);
+}
+
+/* ============================================================
+          SIDEBAR SECTIONS
+          ============================================================ */
+.navsidebarsection {
+  margin-bottom: 2.8rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 2.2rem;
+}
+
+.navsidebarsection:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.sidebar-section-title {
+  color: var(--text-muted);
+  margin-bottom: 1.6rem;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.14rem;
+  font-weight: 600;
+}
+
+.navsidebarlink {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  font-size: 28px;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.45s var(--ease-premium);
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+  padding: 2px 0;
+}
+
+.navsidebarlink:hover {
+  color: #6b4a9e;
+}
+
+.navsidebarlink .sidebar-link-text {
+  display: inline-block;
+  transition: transform 0.45s var(--ease-premium);
+  will-change: transform;
+}
+
+.navsidebarlink:hover .sidebar-link-text {
+  transform: translateY(-100%);
+}
+
+.navsidebarlink::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  color: #6b4a9e;
+  font-weight: 500;
+  font-size: 28px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: transform 0.45s var(--ease-premium);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.navsidebarlink:hover::after {
+  transform: translateY(-100%);
+}
+
+.navsidebarlink:hover {
+  padding-left: 12px;
+  transition:
+    color 0.45s var(--ease-premium),
+    padding-left 0.45s var(--ease-premium);
+}
+
+/* ============================================================
+          SIDEBAR LOGIN BUTTON
+          ============================================================ */
+.navsidebar-login {
+  display: block;
+  width: 100%;
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 15px 0;
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  border: 1.5px solid var(--text-secondary);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transition-premium);
+  margin-top: 0.5rem;
+  text-align: center;
+  text-decoration: none;
+  font-family:
+    "Inter",
+    -apple-system,
+    sans-serif;
+  clip-path: none;
+}
+
+.navsidebar-login:hover {
+  background: var(--text-secondary);
+  color: var(--white);
+  border-color: var(--text-secondary);
+  box-shadow: 0 8px 30px rgba(137, 100, 197, 0.35);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+          SIDEBAR CONTACT
+          ============================================================ */
+.navsidebarcontact {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.navsidebarcontact .contact-dot {
+  color: var(--text-muted);
+  font-size: 0.5rem;
+  flex-shrink: 0;
+}
+
+.sidebar-best-seller {
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+  color: var(--text-secondary);
+}
+
+/* ============================================================
+          SIDEBAR INPUT & SUBSCRIBE
+          ============================================================ */
+.navsidebarinput {
+  width: 100%;
+  background: var(--bg-sidebar-alt);
+  border: 1px solid var(--border-subtle);
+  padding: 0.9rem 1.1rem;
+  color: var(--white);
+  margin-top: 1rem;
+  outline: none;
+  font-size: 0.85rem;
+  border-radius: 50px;
+  transition: var(--transition-fast);
+  font-family:
+    "Inter",
+    -apple-system,
+    sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.navsidebarinput::placeholder {
+  color: var(--text-muted);
+}
+
+.navsidebarinput:focus {
+  border-color: var(--text-secondary);
+  box-shadow: 0 0 0 3px rgba(137, 100, 197, 0.15);
+  background: rgba(137, 100, 197, 0.05);
+}
+
+.sidebar-subscribe-btn {
+  background: transparent;
+  padding: 10px 16px;
+  margin-top: 1rem;
+  border: 1.5px solid var(--text-secondary);
+  cursor: pointer;
+  border-radius: 50px;
+  transition: var(--transition-premium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--text-secondary);
+}
+
+.sidebar-subscribe-btn:hover {
+  background: var(--text-secondary);
+  color: var(--white);
+  border-color: var(--text-secondary);
+  box-shadow: 0 6px 24px rgba(137, 100, 197, 0.3);
+}
+
+.sidebar-subscribe-btn svg {
+  stroke: currentColor;
+  transition: var(--transition-fast);
+}
+
+.sidebar-subscribe-btn:hover svg {
+  stroke: var(--white);
+}
+
+.sidebar-subscribe-desc {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================================
+          SOCIAL ICONS
+          ============================================================ */
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.social-icon {
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(137, 100, 197, 0.25);
+  color: var(--text-secondary);
+  transition: var(--transition-premium);
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.social-icon:hover {
+  background: var(--text-secondary);
+  color: var(--white);
+  border-color: var(--text-secondary);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(137, 100, 197, 0.3);
+}
+
+.social-icon svg {
+  width: 16px;
+  height: 16px;
+  transition: var(--transition-fast);
+}
+
+.sidebar-footer-text {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  margin-top: 2.8rem;
+  letter-spacing: 0.04em;
+  font-weight: 400;
+}
+
+/* ============================================================
+          SCROLLBAR – Sidebar
+          ============================================================ */
+.navoverlay::-webkit-scrollbar {
+  width: 3px;
+}
+
+.navoverlay::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.navoverlay::-webkit-scrollbar-thumb {
+  background: rgba(137, 100, 197, 0.3);
+  border-radius: 10px;
+}
+
+.navoverlay::-webkit-scrollbar-thumb:hover {
+  background: rgba(137, 100, 197, 0.5);
+}
+
+/* ============================================================
+          RESPONSIVE BREAKPOINTS
+          ============================================================ */
+
+/* --- DESKTOP (1024px+) – hide hamburger & sidebar --- */
+@media (min-width: 1024px) {
+  .navhamburger {
+    display: none !important;
+  }
+
+  .navoverlay {
+    display: none !important;
+  }
+
+  .dark-mode-icon {
+    margin-right: 4px;
+  }
+}
+
+/* Tablet & Below */
+@media (max-width: 1024px) {
+  .navwrapper {
+    padding: 1.2rem 2rem;
+    height: 80px;
+  }
+
+  .navsticky {
+    padding: 0.9rem 2rem;
+    height: 70px;
+  }
+
+  .navlogo img {
+    height: 80px;
+  }
+
+  .navsticky .navlogo img {
+    height: 50px;
+  }
+
+  .navoverlay {
+    max-width: 100%;
+    padding: 3rem 2rem 2rem;
+  }
+
+  .navsidebarlink {
+    font-size: 24px;
+    margin-bottom: 1.4rem;
+  }
+
+  .navsidebarlink::after {
+    font-size: 24px;
+  }
+
+  .navclose {
+    top: 1.6rem;
+    right: 1.6rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .navwrapper {
+    padding: 0.9rem 1.2rem;
+    height: 72px;
+  }
+
+  .navsticky {
+    padding: 0.7rem 1.2rem;
+    height: 64px;
+  }
+
+  .navlogo img {
+    height: 80px;
+  }
+
+  .navsticky .navlogo img {
+    height: 50px;
+  }
+
+  .navoverlay {
+    padding: 2.4rem 1.4rem 1.6rem;
+  }
+
+  .navsidebarlink {
+    font-size: 22px;
+    margin-bottom: 1.2rem;
+  }
+
+  .navsidebarlink::after {
+    font-size: 22px;
+  }
+
+  .navhamburger {
+    width: 36px;
+    height: 36px;
+  }
+
+  .hamburger-lines {
+    width: 20px;
+    height: 15px;
+  }
+
+  .hamburger-line {
+    width: 20px;
+    height: 1.4px;
+  }
+
+  .navhamburger.active .hamburger-line:nth-child(1) {
+    transform: translateY(6.8px) rotate(45deg);
+  }
+
+  .navhamburger.active .hamburger-line:nth-child(3) {
+    transform: translateY(-6.8px) rotate(-45deg);
+  }
+
+  .navclose {
+    top: 1.4rem;
+    right: 1.2rem;
+    width: 38px;
+    height: 38px;
+  }
+
+  .navclose svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .social-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .sidebar-section-title {
+    font-size: 0.65rem;
+    letter-spacing: 0.12rem;
+  }
+
+  .sidebar-best-seller {
+    font-size: 1.15rem;
+  }
+
+  .theme-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+  .navwrapper {
+    padding: 1.8rem 5rem;
+    height: 100px;
+  }
+
+  .navsticky {
+    padding: 1.2rem 5rem;
+    height: 86px;
+  }
+
+  .navlogo img {
+    height: 80px;
+  }
+
+  .navsticky .navlogo img {
+    height: 42px;
+  }
+
+  .navmenu {
+    gap: 3.8rem;
+  }
+
+  .navlink,
+  .navlink::after {
+    font-size: 16px;
+  }
+
+  .navoverlay {
+    max-width: 460px;
+    padding: 4rem 3.2rem 3rem;
+  }
+
+  .navsidebarlink {
+    font-size: 30px;
+  }
+
+  .navsidebarlink::after {
+    font-size: 30px;
+  }
+}
+
+/* ============================================================
+          REDUCED MOTION
+          ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .navwrapper,
+  .navsticky,
+  .navlink .navlink-text,
+  .navlink::after,
+  .navsidebarlink .sidebar-link-text,
+  .navsidebarlink::after,
+  .navoverlay,
+  .hamburger-line,
+  .navclose svg,
+  .navbutton,
+  .navsidebar-login,
+  .social-icon {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+          LIGHT THEME OVERRIDES
+          ============================================================ */
+body.light-theme {
+  --bg-dark: #f5f3f8;
+  --bg-sidebar: #ffffff;
+  --bg-sidebar-alt: #f0edf5;
+  --text-primary: #1a1a1a;
+  --text-secondary: #7b4fb0;
+  --text-muted: rgba(123, 79, 176, 0.5);
+  --border-subtle: rgba(123, 79, 176, 0.12);
+  --border-light: rgba(123, 79, 176, 0.2);
+}
+
+body.light-theme .navsticky {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+body.light-theme .navoverlay {
+  background: var(--bg-sidebar);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+body.light-theme .navsidebarinput {
+  background: var(--bg-sidebar-alt);
+  color: var(--text-primary);
+}
+
+body.light-theme .navsidebarinput:focus {
+  background: rgba(123, 79, 176, 0.06);
+}
+
+body.light-theme .theme-icon {
+  color: var(--text-secondary);
+  border-color: rgba(123, 79, 176, 0.2);
+}
+
+body.light-theme .theme-icon:hover {
+  background: rgba(123, 79, 176, 0.08);
+}
+
+body.light-theme .social-icon {
+  border-color: rgba(123, 79, 176, 0.2);
+}
+
+body.light-theme .social-icon:hover {
+  background: var(--text-secondary);
+  color: var(--white);
+  border-color: var(--text-secondary);
+}
+
+body.light-theme .navbutton {
+  color: var(--text-secondary);
+  border-color: var(--text-secondary);
+}
+
+body.light-theme .navbutton:hover {
+  background: var(--text-secondary);
+  color: var(--white);
+  border-color: var(--text-secondary);
+}
+
+body.light-theme .navlink {
+  color: var(--text-secondary);
+}
+
+body.light-theme .navlink:hover {
+  color: #5a3a85;
+}
+
+body.light-theme .navlink::after {
+  color: #5a3a85;
+}
+
+body.light-theme .navhamburger .hamburger-line {
+  background: var(--text-secondary);
+}
+
+body.light-theme .navhamburger:hover .hamburger-line {
+  background: #5a3a85;
+}
+
+body.light-theme .navsidebarlink {
+  color: var(--text-secondary);
+}
+
+body.light-theme .navsidebarlink:hover {
+  color: #5a3a85;
+}
+
+body.light-theme .navsidebarlink::after {
+  color: #5a3a85;
+}
+
+body.light-theme .navsidebar-login {
+  color: var(--text-secondary);
+  border-color: var(--text-secondary);
+}
+
+body.light-theme .navsidebar-login:hover {
+  background: var(--text-secondary);
+  color: var(--white);
+  border-color: var(--text-secondary);
+}
+
+body.light-theme .sidebar-subscribe-btn {
+  color: var(--text-secondary);
+  border-color: var(--text-secondary);
+}
+
+body.light-theme .sidebar-subscribe-btn:hover {
+  background: var(--text-secondary);
+  color: var(--white);
+  border-color: var(--text-secondary);
+}
+
+body.light-theme .navsidebarcontact {
+  color: var(--text-secondary);
+}
+
+body.light-theme .sidebar-best-seller {
+  color: var(--text-secondary);
+}
+
+body.light-theme .navclose svg {
+  stroke: var(--text-secondary);
+}
+
+body.light-theme .navclose:hover svg {
+  stroke: #5a3a85;
+}
+
+body.light-theme .navclose:hover {
+  background: rgba(123, 79, 176, 0.08);
+}

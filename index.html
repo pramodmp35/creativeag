@@ -1,0 +1,1523 @@
+<!doctype html>
+<html lang="en" class="light-mode">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STACKLY Creative -Agency</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./home.css" />
+    <audio id="clickSound" src="./assets/click.ogg" preload="auto"></audio>
+    <style>
+      /* ============================================================
+         CSS CUSTOM PROPERTIES – LIGHT MODE (DEFAULT)
+         ============================================================ */
+      :root {
+        --hrobg: #ffffff;
+        --hrotextmain: #111111;
+        --hrotextmuted: rgba(17, 17, 17, 0.65);
+        --hrotagcolor: rgba(17, 17, 17, 0.4);
+        --hrovideooverlay: rgba(255, 255, 255, 0.2);
+        --hrobtnbg: #111111;
+        --hrobtntext: #ffffff;
+        --hrobtniconbg: #ffffff;
+        --hrobtniconcolor: #111111;
+        --hroease: cubic-bezier(0.19, 1, 0.22, 1);
+      }
+
+      /* ============================================================
+         DARK MODE OVERRIDES
+         ============================================================ */
+      body.dark {
+        --hrobg: #0f0f0f;
+        --hrotextmain: #ffffff;
+        --hrotextmuted: rgba(255, 255, 255, 0.65);
+        --hrotagcolor: rgba(255, 255, 255, 0.4);
+        --hrovideooverlay: rgba(0, 0, 0, 0.45);
+        --hrobtnbg: #ffffff;
+        --hrobtntext: #111111;
+        --hrobtniconbg: #111111;
+        --hrobtniconcolor: #ffffff;
+      }
+
+      /* ============================================================
+         RESET & BASE
+         ============================================================ */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--hrobg);
+        color: var(--hrotextmain);
+        transition:
+          background-color 0.45s var(--hroease),
+          color 0.45s var(--hroease);
+        overflow-x: hidden;
+      }
+
+      /* ============================================================
+         SECTION 1: HROHERO (Cinematic Video Background)
+         ============================================================ */
+      .hrohero {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        min-height: 650px;
+        overflow: hidden;
+        background-color: var(--hrobg);
+        transition: background-color 0.45s var(--hroease);
+      }
+
+      /* Video Background */
+      .hrovideobg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      /* Cinematic Overlay (to blend with light/dark modes) */
+      .hrooverlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: var(--hrovideooverlay);
+        backdrop-filter: blur(0.5px);
+        transition: background 0.45s var(--hroease);
+      }
+
+      /* --- UNIQUE EDITORIAL LAYOUT --- */
+      .hrocontent {
+        position: relative;
+        z-index: 2;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 20px;
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .hromainblock {
+        max-width: 900px;
+        padding-left: 0;
+      }
+
+      /* Mobile First: Centered/Slightly Left Layout */
+      .hrosmalltag {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--hrotagcolor);
+        margin-bottom: 30px;
+        position: relative;
+        padding-left: 30px;
+      }
+
+      .hrosmalltag::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 2px;
+        background: var(--hrotagcolor);
+      }
+
+      .hrobigtext {
+        font-family: "Inter", sans-serif;
+        font-weight: 800;
+        font-size: clamp(44px, 10vw, 130px);
+        line-height: 0.95;
+        letter-spacing: -4px;
+        color: var(--hrotextmain);
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        transition: color 0.45s var(--hroease);
+      }
+
+      .hrosmalltext {
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--hrotextmuted);
+        max-width: 420px;
+        margin-bottom: 40px;
+        font-weight: 400;
+      }
+
+      /* Premium CTA Button */
+      .hrobtnwrap {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .hrobtnmain {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 6px 6px 6px 28px;
+        background: var(--hrobtnbg);
+        color: var(--hrobtntext);
+        border-radius: 60px;
+        text-decoration: none;
+        overflow: hidden;
+        position: relative;
+        transition:
+          transform 0.4s var(--hroease),
+          box-shadow 0.4s var(--hroease);
+        cursor: pointer;
+        font-family: inherit;
+        border: 1px solid transparent;
+        min-width: 180px;
+      }
+
+      .hrobtnmain:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      }
+      body.dark .hrobtnmain:hover {
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Purple slide overlay */
+      .hrobtnmain::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background: #8b5cf6;
+        z-index: 1;
+        transition: width 0.6s var(--hroease);
+      }
+
+      .hrobtnmain:hover::before {
+        width: 100%;
+      }
+
+      .hrobtnicon {
+        position: relative;
+        z-index: 2;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--hrobtniconbg);
+        color: var(--hrobtniconcolor);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: 300;
+        flex-shrink: 0;
+        transition:
+          background 0.4s var(--hroease),
+          color 0.4s var(--hroease),
+          transform 0.4s var(--hroease);
+      }
+
+      .hrobtnmain:hover .hrobtnicon {
+        background: transparent;
+        color: #ffffff;
+        transform: rotate(90deg) scale(1.1);
+      }
+
+      .hrobtntext {
+        position: relative;
+        z-index: 2;
+        font-weight: 600;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding-right: 16px;
+        color: inherit;
+        transition: color 0.4s var(--hroease);
+      }
+
+      .hrobtnmain:hover .hrobtntext {
+        color: #ffffff;
+      }
+
+      /* ============================================================
+         RESPONSIVE BREAKPOINTS (Desktop Layout)
+         ============================================================ */
+
+      @media (min-width: 768px) {
+        .hrobigtext {
+          font-size: clamp(56px, 9vw, 110px);
+        }
+        .hrobtnmain {
+          padding: 8px 8px 8px 36px;
+          min-width: 220px;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .hrocontent {
+          padding: 0 60px;
+        }
+        .hromainblock {
+          padding-left: 40px;
+          border-left: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        body.dark .hromainblock {
+          border-left-color: rgba(255, 255, 255, 0.2);
+        }
+        .hrobigtext {
+          font-size: clamp(80px, 9vw, 130px);
+          letter-spacing: -6px;
+        }
+        .hrosmalltext {
+          font-size: 18px;
+        }
+      }
+
+      @media (min-width: 1400px) {
+        .hrocontent {
+          padding: 0 80px;
+        }
+        .hromainblock {
+          padding-left: 60px;
+        }
+        .hrobigtext {
+          font-size: 150px;
+        }
+      }
+
+      /* ============================================================
+         REDUCED MOTION
+         ============================================================ */
+      @media (prefers-reduced-motion: reduce) {
+        .hrooverlay {
+          backdrop-filter: none;
+        }
+        .hrobtnmain,
+        .hrobtnmain::before,
+        .hrobtnicon,
+        .hrobtntext {
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loader" class="loader-overlay" aria-hidden="true">
+      <div class="loader-container">
+        <div class="loader-brand" aria-label="STACKLY">
+          <span class="loader-letter" data-delay="0">S</span>
+          <span class="loader-letter" data-delay="80">T</span>
+          <span class="loader-letter" data-delay="160">A</span>
+          <span class="loader-letter" data-delay="240">C</span>
+          <span class="loader-letter" data-delay="320">K</span>
+          <span class="loader-letter" data-delay="400">L</span>
+          <span class="loader-letter" data-delay="480">Y</span>
+        </div>
+      </div>
+    </div>
+    <!-- ============================================================
+    NAVBAR
+    ============================================================ -->
+    <nav class="navwrapper" id="navwrapper">
+      <!-- Logo -->
+      <div class="navlogo">
+        <img
+          src="./assets/logo.webp"
+          alt="STACKLY Logo"
+          onclick="window.location.href = './index.html'"
+          style="cursor: pointer"
+        />
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="navmenu">
+        <a href="./index.html" class="navlink" data-text="Home"
+          ><span class="navlink-text">Home</span></a
+        >
+        <a href="./about.html" class="navlink" data-text="About"
+          ><span class="navlink-text">About</span></a
+        >
+        <a href="./portfolio.html" class="navlink" data-text="Portfolio"
+          ><span class="navlink-text">Portfolio</span></a
+        >
+        <a href="./services.html" class="navlink" data-text="Services"
+          ><span class="navlink-text">Services</span></a
+        >
+        <a href="./blog.html" class="navlink" data-text="Blog"
+          ><span class="navlink-text">Blog</span></a
+        >
+        <a href="./contact.html" class="navlink" data-text="Contact"
+          ><span class="navlink-text">Contact</span></a
+        >
+      </div>
+
+      <!-- Right Side: Login Button + Theme Toggle + Hamburger -->
+      <div style="display: flex; align-items: center; gap: 14px">
+        <!-- ===== PREMIUM THEME TOGGLE BUTTON ===== -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="sun-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path
+              d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+            ></path>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <button
+          class="navbutton"
+          onclick="window.location.href = './login.html'"
+        >
+          Login
+        </button>
+
+        <!-- Hamburger -->
+        <div
+          class="navhamburger"
+          id="navhamburger"
+          aria-label="Menu"
+          role="button"
+          tabindex="0"
+        >
+          <span class="hamburger-lines">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ============================================================
+    SIDEBAR OVERLAY
+    ============================================================ -->
+    <div class="navoverlay" id="navoverlay" aria-hidden="true">
+      <!-- ===== PREMIUM CLOSE BUTTON – Thin X SVG ===== -->
+      <div
+        class="navclose"
+        id="navclose"
+        aria-label="Close menu"
+        role="button"
+        tabindex="0"
+      >
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </div>
+
+      <!-- Navigation Section -->
+      <div class="navsidebarsection">
+        <h4 class="sidebar-section-title">Navigation</h4>
+        <a href="./index.html" class="navsidebarlink" data-text="Home"
+          ><span class="sidebar-link-text">Home</span></a
+        >
+        <a href="./about.html" class="navsidebarlink" data-text="About"
+          ><span class="sidebar-link-text">About</span></a
+        >
+        <a href="./portfolio.html" class="navsidebarlink" data-text="Portfolio"
+          ><span class="sidebar-link-text">Portfolio</span></a
+        >
+        <a href="./services.html" class="navsidebarlink" data-text="Services"
+          ><span class="sidebar-link-text">Services</span></a
+        >
+        <a href="./blog.html" class="navsidebarlink" data-text="Blog"
+          ><span class="sidebar-link-text">Blog</span></a
+        >
+        <a href="./contact.html" class="navsidebarlink" data-text="Contact"
+          ><span class="sidebar-link-text">Contact</span></a
+        >
+
+        <!-- Sidebar Login Button -->
+        <a href="./login.html" class="navsidebar-login">Login</a>
+      </div>
+
+      <!-- Best Seller Section -->
+      <div class="navsidebarsection">
+        <h4 class="sidebar-section-title">Best Seller Of Month</h4>
+        <p class="sidebar-best-seller">GUNS AND GULABS</p>
+      </div>
+
+      <!-- Contact Section -->
+      <div class="navsidebarsection">
+        <h4 class="sidebar-section-title">Contact Us</h4>
+        <p class="navsidebarcontact">
+          <span class="contact-dot">●</span> +9 333 222 5557
+        </p>
+        <p class="navsidebarcontact">
+          <span class="contact-dot">●</span> info@stackly.com
+        </p>
+        <p class="navsidebarcontact">
+          <span class="contact-dot">●</span> New Central Park W7 Street, New
+          York
+        </p>
+      </div>
+
+      <!-- Subscribe Section -->
+      <form class="navsidebarsection" action="./404.html">
+        <h4 class="sidebar-section-title">Subscribe</h4>
+        <div style="display: flex; gap: 8px; align-items: flex-start">
+          <input
+            type="email"
+            class="navsidebarinput"
+            placeholder="Get News & Updates"
+            aria-label="Email for newsletter"
+            required
+          />
+          <button class="sidebar-subscribe-btn" aria-label="Subscribe">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+        <p class="sidebar-subscribe-desc">
+          Subscribe to get the latest news, updates, and exclusive offers
+          delivered straight to your inbox.
+        </p>
+      </form>
+
+      <!-- Social Icons -->
+      <div class="social-icons">
+        <a href="./404.html" class="social-icon" aria-label="Twitter">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
+            />
+          </svg>
+        </a>
+        <a href="./404.html" class="social-icon" aria-label="Facebook">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+            />
+          </svg>
+        </a>
+        <a href="./404.html" class="social-icon" aria-label="LinkedIn">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+            />
+            <rect x="2" y="9" width="4" height="12" />
+            <circle cx="4" cy="4" r="2" />
+          </svg>
+        </a>
+        <a href="./404.html" class="social-icon" aria-label="YouTube">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33zM9.75 15.03V8.47l6.5 3.28-6.5 3.28z"
+            />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Footer -->
+      <div class="sidebar-footer-text">Copyright © 2026 — BY STACKLY</div>
+    </div>
+    <!-- ============================================================
+    SECTION 1: HROHERO (Video Background & Editorial Block)
+    ============================================================ -->
+    <section class="hrohero" id="hrohero">
+      <!-- REPLACE `src` with your actual video URL -->
+      <video id="heroVideo" class="hrovideobg" autoplay muted loop playsinline>
+        <source src="./assets/hero.mp4" type="video/mp4" />
+        <!-- Fallback image if video fails -->
+      </video>
+
+      <!-- Theming Overlay -->
+      <div class="hrooverlay"></div>
+
+      <!-- Centered (Left-aligned) Content Block -->
+      <div class="hrocontent">
+        <div class="hromainblock">
+          <!-- Tagline -->
+          <div class="hrosmalltag" data-aos="fade-right" data-aos-delay="100">
+            Premium Creative Agency
+          </div>
+
+          <!-- Main Large Typography -->
+          <div class="hrobigtext" data-aos="fade-up" data-aos-delay="200">
+            WE DESIGN<br />
+            WE DEVELOP<br />
+            WE BUILD
+          </div>
+
+          <!-- Small Description -->
+          <!-- <div class="hrosmalltext" data-aos="fade-up" data-aos-delay="300">
+            An award-winning creative studio based in India, crafting digital
+            experiences that blend modern technology with visionary design.
+          </div> -->
+
+          <!-- Premium CTA -->
+          <div class="hrobtnwrap" data-aos="fade-up" data-aos-delay="400">
+            <a href="./contact.html" class="hrobtnmain">
+              <span class="hrobtntext">Start Project</span>
+              <span class="hrobtnicon">+</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ============================================================
+    SECTION 2: STATS & ABOUT
+    ============================================================ -->
+    <section class="secstats" id="secstats">
+      <div class="seccontainer">
+        <div class="secstatsgrid">
+          <!-- Left Column: Stats Cards -->
+          <div class="secstatsleft">
+            <!-- Card 1 -->
+            <div class="secstatscard" data-aos="fade-up" data-aos-delay="50">
+              <div class="secstatstext">Years of<br />experience</div>
+              <div class="secstatnumber" data-target="15">0<span>+</span></div>
+            </div>
+            <!-- Card 2 -->
+            <div class="secstatscard" data-aos="fade-up" data-aos-delay="150">
+              <div class="secstatstext">Crafted digital<br />products</div>
+              <div class="secstatnumber" data-target="215">0</div>
+            </div>
+            <!-- Card 3 -->
+            <div class="secstatscard" data-aos="fade-up" data-aos-delay="250">
+              <div class="secstatstext">Skilled team<br />players</div>
+              <div class="secstatnumber" data-target="70">0</div>
+            </div>
+          </div>
+
+          <!-- Right Column: About & Button -->
+          <div class="secstatsright">
+            <!-- About Card -->
+            <div class="secaboutcard" data-aos="fade-left" data-aos-delay="100">
+              <div class="secpilltag">Who we are</div>
+              <p class="secabouttext">
+                We are an award winning brand design and development agency in
+                India set up in 2017 who crafts product. We work closely with
+                our team of senior designers, and developers. Get full-service
+                creative with full-service care.
+              </p>
+            </div>
+            <!-- CTA Button -->
+            <div
+              class="secbtnwrapper"
+              data-aos="fade-left"
+              data-aos-delay="200"
+            >
+              <a href="./about.html" class="secbtnplus">
+                <span class="seciconcircle">+</span>
+                <span class="secbtntext">Learn more</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ============================================================
+    SECTION 3: THRPORTFOLIO
+    ============================================================ -->
+    <section class="thrportfolio" id="thrportfolio">
+      <div class="thrcontainer">
+        <div class="thrwrapper">
+          <!-- LEFT COLUMN -->
+          <div class="thrleftcol" data-aos="fade-right" data-aos-delay="100">
+            <div class="thrpilltag">Portfolio</div>
+            <h2 class="thrheading">Selected<br />Work</h2>
+            <div class="thractionrow">
+              <!-- Navigation Buttons -->
+              <button
+                class="thrnavbtn"
+                id="thrnavprev"
+                aria-label="Previous slide"
+              >
+                <svg viewBox="0 0 24 24">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button class="thrnavbtn" id="thrnavnext" aria-label="Next slide">
+                <svg viewBox="0 0 24 24">
+                  <polyline points="9 6 15 12 9 18"></polyline>
+                </svg>
+              </button>
+
+              <!-- Browse Button -->
+              <!-- <a href="./portfolio.html" class="thrbrowsebtn">
+                <span class="thrplusicon">+</span>
+                <span class="thrbrowsetext">Browse all</span>
+              </a> -->
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN (Slider) -->
+          <div class="thrrightcol" data-aos="fade-left" data-aos-delay="200">
+            <div class="thrsliderwrapper">
+              <div class="thrslidertrack" id="thrslidertrack">
+                <!-- 6 Images (3 Pairs) -->
+                <div class="thrslideitem">
+                  <img src="./assets/proj1.webp" alt="Portfolio 1" />
+                </div>
+                <div class="thrslideitem">
+                  <img src="./assets/proj2.webp" alt="Portfolio 2" />
+                </div>
+                <div class="thrslideitem">
+                  <img src="./assets/proj3.webp" alt="Portfolio 3" />
+                </div>
+                <div class="thrslideitem">
+                  <img src="./assets/proj4.webp" alt="Portfolio 4" />
+                </div>
+                <div class="thrslideitem">
+                  <img src="./assets/proj1.webp" alt="Portfolio 5" />
+                </div>
+                <div class="thrslideitem">
+                  <img src="./assets/proj2.webp" alt="Portfolio 6" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ============================================================
+    SECTION 4: FTHSERVICES
+    ============================================================ -->
+    <section class="fthservices" id="fthservices">
+      <div class="fthcontainer">
+        <div class="fthgrid">
+          <!-- Service 1: Interaction Design -->
+          <div class="fthcard" data-aos="fade-up" data-aos-delay="0">
+            <div class="fthhovercircle"></div>
+            <div class="fthicon">
+              <svg viewBox="0 0 24 24">
+                <path d="M6 2C12 2 18 2 18 12C18 22 12 22 6 22Z" />
+                <path d="M12 2C18 2 24 2 24 12C24 22 18 22 12 22Z" />
+              </svg>
+            </div>
+            <div class="fthtitle">Interaction<br />Design</div>
+            <div class="fthplus" onclick="window.location.href = './404.html'">
+              <span>+</span>
+            </div>
+          </div>
+
+          <!-- Service 2: Website Development -->
+          <div class="fthcard" data-aos="fade-up" data-aos-delay="100">
+            <div class="fthhovercircle"></div>
+            <div class="fthicon">
+              <svg viewBox="0 0 24 24">
+                <ellipse cx="12" cy="12" rx="10" ry="10" />
+                <ellipse cx="12" cy="12" rx="6" ry="10" />
+                <line x1="10" y1="4" x2="10" y2="20" />
+                <line x1="12" y1="2" x2="12" y2="22" />
+                <line x1="14" y1="4" x2="14" y2="20" />
+              </svg>
+            </div>
+            <div class="fthtitle">Website<br />Development</div>
+            <div class="fthplus" onclick="window.location.href = './404.html'">
+              <span>+</span>
+            </div>
+          </div>
+
+          <!-- Service 3: SaaS Product Design -->
+          <div class="fthcard" data-aos="fade-up" data-aos-delay="200">
+            <div class="fthhovercircle"></div>
+            <div class="fthicon">
+              <svg viewBox="0 0 24 24">
+                <line x1="12" y1="2" x2="12" y2="22" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <line x1="5" y1="5" x2="19" y2="19" />
+                <line x1="19" y1="5" x2="5" y2="19" />
+              </svg>
+            </div>
+            <div class="fthtitle">SaaS Product<br />Design</div>
+            <div class="fthplus" onclick="window.location.href = './404.html'">
+              <span>+</span>
+            </div>
+          </div>
+
+          <!-- Service 4: Digital Marketing -->
+          <div class="fthcard" data-aos="fade-up" data-aos-delay="300">
+            <div class="fthhovercircle"></div>
+            <div class="fthicon">
+              <svg viewBox="0 0 24 24">
+                <polygon points="12,2 20,12 12,22 4,12" />
+                <polygon points="12,10 16,12 12,14 8,12" />
+              </svg>
+            </div>
+            <div class="fthtitle">Digital<br />Marketing</div>
+            <div class="fthplus" onclick="window.location.href = './404.html'">
+              <span>+</span>
+            </div>
+          </div>
+
+          <!-- Service 5: Brand Guidelines -->
+          <div class="fthcard" data-aos="fade-up" data-aos-delay="400">
+            <div class="fthhovercircle"></div>
+            <div class="fthicon">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 4C12 4 16 8 16 12" />
+                <path d="M4 10C12 10 16 14 16 18" />
+                <path d="M16 4C24 4 28 8 28 12" />
+                <path d="M16 10C24 10 28 14 28 18" />
+              </svg>
+            </div>
+            <div class="fthtitle">Brand<br />Guidelines</div>
+            <div class="fthplus" onclick="window.location.href = './404.html'">
+              <span>+</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ============================================================
+    SECTION 5: FIFTEAM
+    ============================================================ -->
+    <section class="fifteam" id="fifteam">
+      <div class="fifcontainer">
+        <div class="fifwrap">
+          <!-- Left Column -->
+          <div class="fifleft" data-aos="fade-right" data-aos-delay="100">
+            <div>
+              <div class="fifpill">The team</div>
+              <h2 class="fifheading">
+                Our talented<br />and creative<br />team
+              </h2>
+            </div>
+
+            <!-- Image Preview Container -->
+            <div class="fifpreview" id="fifpreview">
+              <img
+                src=""
+                alt="Team member preview"
+                class="fifpreviewimg"
+                id="fifpreviewimg"
+              />
+            </div>
+          </div>
+
+          <!-- Right Column (Team List) -->
+          <div class="fifright" data-aos="fade-left" data-aos-delay="200">
+            <div class="fiflist">
+              <!-- Member 1 -->
+              <div class="fifmember" data-image="./assets/cl1.webp">
+                <div class="fifinfo">
+                  <img
+                    src="./assets/cl1.webp"
+                    alt="Cristian"
+                    class="fifavatar"
+                  />
+                  <div class="fiftextgroup">
+                    <div class="fifname">Cristian Vargas</div>
+                    <div class="fifrole">CEO & Founder</div>
+                  </div>
+                </div>
+                <div class="fifsocials">
+                  <a href="./404.html"><i class="fab fa-facebook-f"></i></a>
+                  <a href="./404.html"><i class="fab fa-behance"></i></a>
+                </div>
+              </div>
+
+              <!-- Member 2 -->
+              <div class="fifmember" data-image="./assets/cl2.webp">
+                <div class="fifinfo">
+                  <img src="./assets/cl2.webp" alt="Joey" class="fifavatar" />
+                  <div class="fiftextgroup">
+                    <div class="fifname">Joey Dello Russo</div>
+                    <div class="fifrole">Lead Designer</div>
+                  </div>
+                </div>
+                <div class="fifsocials">
+                  <a href="./404.html"><i class="fab fa-facebook-f"></i></a>
+                  <a href="./404.html"><i class="fab fa-dribbble"></i></a>
+                  <a href="./404.html"><i class="fab fa-instagram"></i></a>
+                  <a href="./404.html"><i class="fab fa-behance"></i></a>
+                </div>
+              </div>
+
+              <!-- Member 3 -->
+              <div class="fifmember" data-image="./assets/cl3.webp">
+                <div class="fifinfo">
+                  <img
+                    src="./assets/cl3.webp"
+                    alt="Michelle"
+                    class="fifavatar"
+                  />
+                  <div class="fiftextgroup">
+                    <div class="fifname">Michelle Gasparov</div>
+                    <div class="fifrole">Lead Developer</div>
+                  </div>
+                </div>
+                <div class="fifsocials">
+                  <a href="./404.html"><i class="fab fa-dribbble"></i></a>
+                  <a href="./404.html"><i class="fab fa-instagram"></i></a>
+                  <a href="./404.html"><i class="fab fa-behance"></i></a>
+                </div>
+              </div>
+
+              <!-- Member 4 -->
+              <div class="fifmember" data-image="./assets/at1.webp">
+                <div class="fifinfo">
+                  <img src="./assets/at1.webp" alt="Bruno" class="fifavatar" />
+                  <div class="fiftextgroup">
+                    <div class="fifname">Bruno Larry Vargas</div>
+                    <div class="fifrole">Admin & HR</div>
+                  </div>
+                </div>
+                <div class="fifsocials">
+                  <a href="./404.html"><i class="fab fa-facebook-f"></i></a>
+                  <a href="./404.html"><i class="fab fa-dribbble"></i></a>
+                  <a href="./404.html"><i class="fab fa-behance"></i></a>
+                </div>
+              </div>
+
+              <!-- Member 5 -->
+              <div class="fifmember" data-image="./assets/at2.webp">
+                <div class="fifinfo">
+                  <img
+                    src="./assets/at2.webp"
+                    alt="Brandon"
+                    class="fifavatar"
+                  />
+                  <div class="fiftextgroup">
+                    <div class="fifname">Brandon Tailor</div>
+                    <div class="fifrole">WP Developer</div>
+                  </div>
+                </div>
+                <div class="fifsocials">
+                  <a href="./404.html"><i class="fab fa-facebook-f"></i></a>
+                  <a href="./404.html"><i class="fab fa-dribbble"></i></a>
+                  <a href="./404.html"><i class="fab fa-instagram"></i></a>
+                  <a href="./404.html"><i class="fab fa-behance"></i></a>
+                </div>
+              </div>
+
+              <!-- Member 6 -->
+              <div class="fifmember" data-image="./assets/at3.webp">
+                <div class="fifinfo">
+                  <img
+                    src="./assets/at3.webp"
+                    alt="Cristian"
+                    class="fifavatar"
+                  />
+                  <div class="fiftextgroup">
+                    <div class="fifname">Cristian Vargas</div>
+                    <div class="fifrole">CEO & Founder</div>
+                  </div>
+                </div>
+                <div class="fifsocials">
+                  <a href="./404.html"><i class="fab fa-facebook-f"></i></a>
+                  <a href="./404.html"><i class="fab fa-dribbble"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ============================================================
+    SECTION 6: SIXTESTIMONIALS
+    ============================================================ -->
+    <section class="sixtestimonials" id="sixtestimonials">
+      <div class="sixcontainer">
+        <div class="sixwrapper">
+          <!-- LEFT PANEL -->
+          <div class="sixleftpanel" data-aos="fade-right" data-aos-delay="100">
+            <div class="sixpill">Feedback</div>
+
+            <div class="sixcenteredcontent">
+              <img
+                src="./assets/shape1.webp"
+                class="sixemojipreview"
+                alt="Okay hand emoji"
+              />
+              <div class="sixratingwrap">
+                <span class="sixratingnumber">4.9</span>
+                <span class="sixstaricon"><i class="fas fa-star"></i></span>
+              </div>
+              <div class="sixratingsub">
+                Based on <strong>24 reviews</strong><br />
+                on Clutch
+              </div>
+            </div>
+
+            <div class="sixarrowwrap">
+              <button
+                class="sixarrow"
+                id="sixprev"
+                aria-label="Previous testimonial"
+              >
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button
+                class="sixarrow"
+                id="sixnext"
+                aria-label="Next testimonial"
+              >
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- RIGHT PANEL (Slider) -->
+          <div class="sixrightpanel" data-aos="fade-left" data-aos-delay="200">
+            <div class="sixsliderwrap">
+              <div class="sixslidertrack" id="sixslidertrack">
+                <!-- Slide 1 -->
+                <div class="sixslideitem">
+                  <div class="sixcard">
+                    <div class="sixquoteicon">
+                      <svg viewBox="0 0 24 24">
+                        <path d="M10 11h-4v-4h4v4zm8 0h-4v-4h4v4z" />
+                      </svg>
+                    </div>
+                    <div class="sixquotetext">
+                      Our experts craft innovative digital experiences through a
+                      strategic approach driven by creativity and precision.
+                      Stackly's passionate team strives to exceed every
+                      expectation while delivering exceptional outcomes. Our
+                      commitment, attention to detail, and pursuit of excellence
+                      ensure premium quality, lasting value, and complete client
+                      satisfaction.
+                    </div>
+                    <div class="sixauthorwrapper">
+                      <div class="sixauthorinfo">
+                        <span class="sixauthorname">John Doe</span>
+                        <span class="sixauthorrole">CEO, Apple</span>
+                      </div>
+                      <span class="sixreddot"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="sixslideitem">
+                  <div class="sixcard">
+                    <div class="sixquoteicon">
+                      <svg viewBox="0 0 24 24">
+                        <path d="M10 11h-4v-4h4v4zm8 0h-4v-4h4v4z" />
+                      </svg>
+                    </div>
+                    <div class="sixquotetext">
+                      Our experts craft innovative digital experiences through a
+                      strategic approach driven by creativity and precision.
+                      Stackly's passionate team strives to exceed every
+                      expectation while delivering exceptional outcomes. Our
+                      commitment, attention to detail, and pursuit of excellence
+                      ensure premium quality, lasting value, and complete client
+                      satisfaction.
+                    </div>
+                    <div class="sixauthorwrapper">
+                      <div class="sixauthorinfo">
+                        <span class="sixauthorname">Elon Musk</span>
+                        <span class="sixauthorrole">CEO, Tesla</span>
+                      </div>
+                      <span class="sixreddot"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="sixslideitem">
+                  <div class="sixcard">
+                    <div class="sixquoteicon">
+                      <svg viewBox="0 0 24 24">
+                        <path d="M10 11h-4v-4h4v4zm8 0h-4v-4h4v4z" />
+                      </svg>
+                    </div>
+                    <div class="sixquotetext">
+                      Our experts craft innovative digital experiences through a
+                      strategic approach driven by creativity and precision.
+                      Stackly's passionate team strives to exceed every
+                      expectation while delivering exceptional outcomes. Our
+                      commitment, attention to detail, and pursuit of excellence
+                      ensure premium quality, lasting value, and complete client
+                      satisfaction.
+                    </div>
+                    <div class="sixauthorwrapper">
+                      <div class="sixauthorinfo">
+                        <span class="sixauthorname">Bill Gates</span>
+                        <span class="sixauthorrole">CEO, Microsoft</span>
+                      </div>
+                      <span class="sixreddot"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="sixslideitem">
+                  <div class="sixcard">
+                    <div class="sixquoteicon">
+                      <svg viewBox="0 0 24 24">
+                        <path d="M10 11h-4v-4h4v4zm8 0h-4v-4h4v4z" />
+                      </svg>
+                    </div>
+                    <div class="sixquotetext">
+                      Our experts craft innovative digital experiences through a
+                      strategic approach driven by creativity and precision.
+                      Stackly's passionate team strives to exceed every
+                      expectation while delivering exceptional outcomes. Our
+                      commitment, attention to detail, and pursuit of excellence
+                      ensure premium quality, lasting value, and complete client
+                      satisfaction.
+                    </div>
+                    <div class="sixauthorwrapper">
+                      <div class="sixauthorinfo">
+                        <span class="sixauthorname">Satya Nadella</span>
+                        <span class="sixauthorrole">CEO, Microsoft</span>
+                      </div>
+                      <span class="sixreddot"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="sixslideitem">
+                  <div class="sixcard">
+                    <div class="sixquoteicon">
+                      <svg viewBox="0 0 24 24">
+                        <path d="M10 11h-4v-4h4v4zm8 0h-4v-4h4v4z" />
+                      </svg>
+                    </div>
+                    <div class="sixquotetext">
+                      Our experts craft innovative digital experiences through a
+                      strategic approach driven by creativity and precision.
+                      Stackly's passionate team strives to exceed every
+                      expectation while delivering exceptional outcomes. Our
+                      commitment, attention to detail, and pursuit of excellence
+                      ensure premium quality, lasting value, and complete client
+                      satisfaction.
+                    </div>
+                    <div class="sixauthorwrapper">
+                      <div class="sixauthorinfo">
+                        <span class="sixauthorname">Jeff Bezos</span>
+                        <span class="sixauthorrole">CEO, Amazon</span>
+                      </div>
+                      <span class="sixreddot"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 6 -->
+                <div class="sixslideitem">
+                  <div class="sixcard">
+                    <div class="sixquoteicon">
+                      <svg viewBox="0 0 24 24">
+                        <path d="M10 11h-4v-4h4v4zm8 0h-4v-4h4v4z" />
+                      </svg>
+                    </div>
+                    <div class="sixquotetext">
+                      Our experts craft innovative digital experiences through a
+                      strategic approach driven by creativity and precision.
+                      Stackly's passionate team strives to exceed every
+                      expectation while delivering exceptional outcomes. Our
+                      commitment, attention to detail, and pursuit of excellence
+                      ensure premium quality, lasting value, and complete client
+                      satisfaction.
+                    </div>
+                    <div class="sixauthorwrapper">
+                      <div class="sixauthorinfo">
+                        <span class="sixauthorname">Tim Cook</span>
+                        <span class="sixauthorrole">CEO, Apple</span>
+                      </div>
+                      <span class="sixreddot"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 7 -->
+                <div class="sixslideitem">
+                  <div class="sixcard">
+                    <div class="sixquoteicon">
+                      <svg viewBox="0 0 24 24">
+                        <path d="M10 11h-4v-4h4v4zm8 0h-4v-4h4v4z" />
+                      </svg>
+                    </div>
+                    <div class="sixquotetext">
+                      Our experts craft innovative digital experiences through a
+                      strategic approach driven by creativity and precision.
+                      Stackly's passionate team strives to exceed every
+                      expectation while delivering exceptional outcomes. Our
+                      commitment, attention to detail, and pursuit of excellence
+                      ensure premium quality, lasting value, and complete client
+                      satisfaction.
+                    </div>
+                    <div class="sixauthorwrapper">
+                      <div class="sixauthorinfo">
+                        <span class="sixauthorname">Mark Zuckerberg</span>
+                        <span class="sixauthorrole">CEO, Meta</span>
+                      </div>
+                      <span class="sixreddot"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Slide 8 -->
+                <div class="sixslideitem">
+                  <div class="sixcard">
+                    <div class="sixquoteicon">
+                      <svg viewBox="0 0 24 24">
+                        <path d="M10 11h-4v-4h4v4zm8 0h-4v-4h4v4z" />
+                      </svg>
+                    </div>
+                    <div class="sixquotetext">
+                      Our experts craft innovative digital experiences through a
+                      strategic approach driven by creativity and precision.
+                      Stackly's passionate team strives to exceed every
+                      expectation while delivering exceptional outcomes. Our
+                      commitment, attention to detail, and pursuit of excellence
+                      ensure premium quality, lasting value, and complete client
+                      satisfaction.
+                    </div>
+                    <div class="sixauthorwrapper">
+                      <div class="sixauthorinfo">
+                        <span class="sixauthorname">Sundar Pichai</span>
+                        <span class="sixauthorrole">CEO, Google</span>
+                      </div>
+                      <span class="sixreddot"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ============================================================
+    SECTION 7: SVNCLIENTS
+    ============================================================ -->
+    <section class="svnclients" id="svnclients">
+      <div class="svncontainer">
+        <div class="svnwrapper">
+          <!-- LEFT PANEL -->
+          <div class="svnleft" data-aos="fade-right" data-aos-delay="100">
+            <div class="svnheader">
+              <div class="svnpill">Client & Partner</div>
+              <h2 class="svntitle">
+                We help to brands growing<br />and show their success<br />to
+                the world
+              </h2>
+            </div>
+
+            <div class="svnlogosgrid">
+              <!-- Logo 1 -->
+              <div class="svnlogoitem">
+                <i class="fas fa-cube"></i>
+                <span>ASTROX CORN</span>
+              </div>
+              <!-- Logo 2 -->
+              <div class="svnlogoitem">
+                <i class="fas fa-crown"></i>
+                <span>HubSpot</span>
+              </div>
+              <!-- Logo 3 -->
+              <div class="svnlogoitem">
+                <i class="fas fa-bolt"></i>
+                <span>pendo</span>
+              </div>
+              <!-- Logo 4 -->
+              <div class="svnlogoitem">
+                <span class="svnlogocursive">Billyan</span>
+              </div>
+              <!-- Logo 5 -->
+              <div class="svnlogoitem">
+                <i class="fas fa-mountain"></i>
+                <span>Arc</span>
+              </div>
+              <!-- Logo 6 -->
+              <div class="svnlogoitem">
+                <span class="svnlogocursive">Canva</span>
+              </div>
+              <!-- Logo 7 -->
+              <div class="svnlogoitem">
+                <i class="fas fa-circle-nodes"></i>
+                <span>miro</span>
+              </div>
+              <!-- Logo 8 -->
+              <div class="svnlogoitem">
+                <span class="svnlogomodern">MOON</span>
+              </div>
+              <!-- Logo 9 -->
+              <div class="svnlogoitem">
+                <i class="fas fa-heart"></i>
+                <span>IMG</span>
+              </div>
+              <!-- Logo 10 -->
+              <div class="svnlogoitem">
+                <span class="svnlogomodern" style="letter-spacing: 8px"
+                  >DEEI</span
+                >
+              </div>
+            </div>
+
+            <div class="svnfooter">
+              <div class="svnfootertext">
+                More than 250 top brands we<br />worked last 15 year
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT PANEL (Fixed BG Image) -->
+          <div class="svnright" data-aos="fade-left" data-aos-delay="200"></div>
+        </div>
+      </div>
+    </section>
+    <footer class="ftrsite-footer">
+      <div class="ftrfooter-grid">
+        <!-- LEFT PANEL -->
+        <div class="ftrfooter-card ftrleft-panel">
+          <!-- Dotted Globe SVG Background -->
+          <svg
+            class="ftrglobe-decoration"
+            viewBox="0 0 500 500"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g fill="none" stroke-width="1.2" stroke-dasharray="2 6">
+              <!-- Globe Outer Ring -->
+              <circle cx="250" cy="250" r="230" />
+
+              <!-- Latitudinal Circles -->
+              <ellipse cx="250" cy="250" rx="230" ry="50" />
+              <ellipse cx="250" cy="250" rx="230" ry="110" />
+              <ellipse cx="250" cy="250" rx="230" ry="170" />
+              <ellipse cx="250" cy="250" rx="230" ry="210" />
+
+              <!-- Longitudinal Circles (Rotated Ellipses) -->
+              <ellipse cx="250" cy="250" rx="50" ry="230" />
+              <ellipse cx="250" cy="250" rx="110" ry="230" />
+              <ellipse cx="250" cy="250" rx="170" ry="230" />
+              <ellipse cx="250" cy="250" rx="210" ry="230" />
+
+              <!-- Diagonal Perspective Rings -->
+              <g transform="rotate(30 250 250)">
+                <ellipse cx="250" cy="250" rx="230" ry="90" />
+                <ellipse cx="250" cy="250" rx="90" ry="230" />
+              </g>
+              <g transform="rotate(-30 250 250)">
+                <ellipse cx="250" cy="250" rx="230" ry="90" />
+                <ellipse cx="250" cy="250" rx="90" ry="230" />
+              </g>
+            </g>
+          </svg>
+
+          <!-- Top Heading & CTA -->
+          <div>
+            <div class="ftrfooter-top-section">
+              <h2 class="ftrfooter-headline">Let's<br />Start your project</h2>
+              <a href="./contact.html" class="ftrcta-button">
+                <span>GET IN TOUCH</span>
+                <span class="ftrcta-icon-wrapper">
+                  <svg viewBox="0 0 24 24">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </span>
+              </a>
+            </div>
+
+            <div class="ftrfooter-divider"></div>
+          </div>
+
+          <!-- Bottom Branding & Nav Pills -->
+          <div class="ftrfooter-bottom-section">
+            <div class="ftrbranding-group">
+              <img
+                class="ftrfooter-logo"
+                src="./assets/logo.webp"
+                alt="Logo"
+                onclick="window.location.href = './index.html'"
+                style="cursor: pointer"
+              />
+              <p class="ftrbrand-description">
+                WE HOPE TO EMPOWER THE USER AND SIMPLIFY.
+              </p>
+              <p class="ftrcopyright-text">
+                &copy; COPYRIGHT 2026 BY STACKLY. ALL RIGHTS RESERVED.
+              </p>
+            </div>
+
+            <nav class="ftrnav-pills-group" aria-label="Footer Navigation">
+              <a href="./index.html" class="ftrnav-pill">Home</a>
+              <a href="./services.html" class="ftrnav-pill">Services</a>
+              <a href="./portfolio.html" class="ftrnav-pill">Portfolio</a>
+              <a href="./about.html" class="ftrnav-pill">About us</a>
+              <a href="./blog.html" class="ftrnav-pill">Blog</a>
+              <a href="./contact.html" class="ftrnav-pill">Contact</a>
+            </nav>
+          </div>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="ftrfooter-card ftrright-panel">
+          <div class="ftrright-panel-top">
+            <h3 class="ftrsocials-heading">
+              Explore the Socials<br />of STACKLY
+            </h3>
+
+            <div class="ftrsocial-icons-group">
+              <!-- X (Twitter) -->
+              <a
+                href="./404.html"
+                class="ftrsocial-icon-link"
+                aria-label="X (Twitter)"
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                  />
+                </svg>
+              </a>
+
+              <!-- Facebook -->
+              <a
+                href="./404.html"
+                class="ftrsocial-icon-link"
+                aria-label="Facebook"
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                  />
+                </svg>
+              </a>
+
+              <!-- Instagram -->
+              <a
+                href="./404.html"
+                class="ftrsocial-icon-link"
+                aria-label="Instagram"
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                  />
+                </svg>
+              </a>
+
+              <!-- LinkedIn -->
+              <a
+                href="./404.html"
+                class="ftrsocial-icon-link"
+                aria-label="LinkedIn"
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.762-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="ftrnewsletter-section">
+            <div class="ftrnewsletter-title">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                ></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span>Newsletter</span>
+            </div>
+
+            <form class="ftrnewsletter-form" action="./404.html">
+              <input
+                type="email"
+                class="ftrnewsletter-input"
+                placeholder="Enter your email address"
+                required
+              />
+              <button
+                type="submit"
+                class="ftrnewsletter-submit"
+                aria-label="Subscribe"
+              >
+                <svg viewBox="0 0 24 24">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </form>
+
+            <p class="ftrprivacy-notice">
+              By subscribing, you're accepting our
+              <a href="./404.html" class="ftrprivacy-link">Privacy Policy</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating Scroll To Top Button -->
+    <button
+      class="ftrscroll-to-top"
+      id="ftrscrollToTopBtn"
+      aria-label="Scroll to top"
+    >
+      <svg viewBox="0 0 24 24">
+        <line x1="12" y1="19" x2="12" y2="5"></line>
+        <polyline points="5 12 12 5 19 12"></polyline>
+      </svg>
+    </button>
+    <!-- ============================================================
+    JAVASCRIPT – AOS
+    ============================================================ -->
+    <script>
+      const heroVideo = document.getElementById("heroVideo");
+
+      heroVideo.addEventListener("loadedmetadata", () => {
+        heroVideo.playbackRate = 0.25;
+      });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./home.js"></script>
+  </body>
+</html>
