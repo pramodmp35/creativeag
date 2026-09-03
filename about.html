@@ -48,10 +48,10 @@
 
     <style>
       /* ============================================================
-         GLOBAL CUSTOM PROPERTIES (merged from all files)
+         GLOBAL CUSTOM PROPERTIES
          ============================================================ */
       :root {
-        /* From file 1 */
+        /* File 1 */
         --bg-dark: #0f0f0f;
         --bg-sidebar: #111111;
         --bg-sidebar-alt: #1a1a1a;
@@ -66,31 +66,32 @@
         --ease-premium: cubic-bezier(0.19, 1, 0.22, 1);
         --transition-premium: all 0.45s cubic-bezier(0.19, 1, 0.22, 1);
 
-        /* From file 2 (unique) */
+        /* File 2 */
         --card-bg: #ffffff;
         --card-purple: #8a5cf5;
         --card-lime: #c3f53c;
         --card-grey: #f0f0f0;
 
-        /* From file 3 (unique) */
+        /* File 3 */
         --text-arrow: #111111;
         --primary: #8a5cf5;
 
-        /* From file 4 (unique) – we will scope --text-secondary locally */
+        /* File 4 & 6 */
         --icon-bg: #111111;
         --icon-text: #ffffff;
 
-        /* From file 5 (unique) */
+        /* File 5 */
         --heading-color: #b0b0b0;
         --sparkle-color: #b0b0b0;
         --accent-color: #8a5cf5;
 
-        /* From file 6 (unique) – same as file 4 */
+        /* FIX: define --bg-body for light mode (body bg is white) */
+        --bg-body: #ffffff;
       }
 
-      /* Dark Mode Overrides (global) */
+      /* Dark Mode Overrides */
       body.dark {
-        /* file 1 */
+        /* File 1 */
         --bg-dark: #0f0f0f;
         --bg-sidebar: #111111;
         --bg-sidebar-alt: #1a1a1a;
@@ -99,26 +100,32 @@
         --text-muted: rgba(255, 255, 255, 0.5);
         --border-subtle: rgba(255, 255, 255, 0.08);
         --border-light: rgba(255, 255, 255, 0.15);
-        /* file 2 */
+
+        /* File 2 */
         --card-bg: #1a1a1a;
         --card-purple: #6d48d1;
         --card-lime: #a3d32e;
         --card-grey: #222222;
-        /* file 3 */
+
+        /* File 3 */
         --text-arrow: #ffffff;
         --primary: #a77fff;
-        /* file 4 */
+
+        /* File 4 & 6 */
         --icon-bg: #ffffff;
         --icon-text: #111111;
-        /* file 5 */
+
+        /* File 5 */
         --heading-color: #555555;
         --sparkle-color: #555555;
         --accent-color: #a77fff;
-        /* file 6 (same as file 4) */
+
+        /* FIX: define --bg-body for dark mode (body bg is #0f0f0f) */
+        --bg-body: #0f0f0f;
       }
 
       /* ============================================================
-         BASE & OVERFLOW FIX (from file 1)
+         BASE & OVERFLOW FIX
          ============================================================ */
       * {
         margin: 0;
@@ -842,7 +849,6 @@
         }
       }
 
-      /* Introduction Styles */
       .service-item {
         color: var(--text-primary);
         transition: all 0.3s var(--ease-premium);
@@ -859,10 +865,9 @@
       }
 
       /* ============================================================
-         FILE 2: FACTS & NUMBERS SECTION (wrapped)
+         FILE 2: FACTS & NUMBERS
          ============================================================ */
       .facts-wrapper {
-        /* local overrides */
         --text-muted: #666666;
       }
       body.dark .facts-wrapper {
@@ -870,10 +875,9 @@
       }
 
       /* ============================================================
-         FILE 3: TIMELINE SECTION (wrapped)
+         FILE 3: TIMELINE / AWARDS (FIXED hover text contrast)
          ============================================================ */
       .timeline-wrapper {
-        /* local overrides */
         --text-muted: #888888;
       }
       body.dark .timeline-wrapper {
@@ -926,6 +930,8 @@
           grid-area: arrow;
         }
       }
+
+      /* HOVER: background = text-primary, text = bg-body (opposite) */
       .timeline-wrapper .timeline-row:hover {
         border-color: var(--text-primary);
         background: var(--text-primary);
@@ -936,6 +942,7 @@
       .timeline-wrapper .timeline-row:hover .arrow {
         color: var(--bg-body);
       }
+
       .timeline-wrapper .year {
         color: var(--text-muted);
         font-weight: 500;
@@ -987,10 +994,9 @@
       }
 
       /* ============================================================
-         FILE 4: TEAM SECTION (wrapped)
+         FILE 4: TEAM SECTION
          ============================================================ */
       .team-wrapper {
-        /* local overrides */
         --text-secondary: #9ca3af;
         --text-muted: #9ca3af;
       }
@@ -1074,10 +1080,9 @@
       }
 
       /* ============================================================
-         FILE 5: MARQUEE SECTION (wrapped)
+         FILE 5: MARQUEE SECTION
          ============================================================ */
       .marquee-wrapper {
-        --text-primary: #111111; /* local only for this wrapper? Actually we use global */
         padding: 6rem 0;
         background-color: var(--bg-body);
         transition: background-color 0.4s ease;
@@ -1159,7 +1164,7 @@
       }
 
       /* ============================================================
-         FILE 6: BLOG SECTION (wrapped)
+         FILE 6: BLOG SECTION
          ============================================================ */
       .blog-wrapper {
         --text-secondary: #9ca3af;
@@ -1232,25 +1237,12 @@
       .blog-wrapper .blog-card:hover .blog-title-text {
         color: #8a5cf5;
       }
-
-      /* ============================================================
-         FILE 2: additional counter / card styles (already included via global)
-         but we need the card hover etc. They are already defined in the wrapper above?
-         Actually the second file's card styles are not wrapped; they are global.
-         They use variables like --card-bg, --card-purple, etc. which are global.
-         So no extra needed.
-         ============================================================ */
-
-      /* ============================================================
-         GENERAL UTILITY overrides (from file 1)
-         ============================================================ */
-      /* already have */
     </style>
     <link rel="stylesheet" href="./footer.css" />
   </head>
   <body class="light-theme">
     <!-- ============================================================
-         NAVBAR (from file 1)
+         NAVBAR
          ============================================================ -->
     <nav class="navwrapper" id="navwrapper">
       <div class="navlogo">
@@ -1310,7 +1302,7 @@
       </div>
     </nav>
 
-    <!-- SIDEBAR OVERLAY (from file 1) -->
+    <!-- SIDEBAR OVERLAY -->
     <div class="navoverlay" id="navoverlay" aria-hidden="true">
       <div
         class="navclose"
@@ -1425,7 +1417,7 @@
     </div>
 
     <!-- ============================================================
-         HERO SECTION (from file 1)
+         HERO SECTION
          ============================================================ -->
     <section
       class="hero-bg pt-40 pb-24 px-6 text-center flex items-center justify-center"
@@ -1446,7 +1438,7 @@
     </section>
 
     <!-- ============================================================
-         INTRODUCTION SECTION (from file 1)
+         INTRODUCTION SECTION
          ============================================================ -->
     <section class="py-20 px-6 lg:px-20 max-w-7xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
@@ -1512,12 +1504,12 @@
     </section>
 
     <!-- ============================================================
-         FACTS & NUMBERS SECTION (from file 2) – wrapped
+         FACTS & NUMBERS SECTION
          ============================================================ -->
     <div class="facts-wrapper">
       <section class="max-w-7xl mx-auto py-12">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <!-- Card 1: Robot Hand Image -->
+          <!-- Card 1 -->
           <div
             class="h-[300px] md:h-[350px] rounded-[2rem] overflow-hidden shadow-xl"
             data-aos="fade-up"
@@ -1530,7 +1522,7 @@
             />
           </div>
 
-          <!-- Card 2: 60+ Card -->
+          <!-- Card 2 -->
           <div
             class="h-[300px] md:h-[350px] rounded-[2rem] bg-[var(--card-bg)] flex flex-col justify-center items-center p-8 text-center shadow-xl border border-gray-200 dark:border-gray-800"
             data-aos="fade-up"
@@ -1548,7 +1540,7 @@
             </p>
           </div>
 
-          <!-- Card 3: Old Man Image -->
+          <!-- Card 3 -->
           <div
             class="h-[300px] md:h-[350px] rounded-[2rem] overflow-hidden shadow-xl"
             data-aos="fade-up"
@@ -1561,7 +1553,7 @@
             />
           </div>
 
-          <!-- Card 4: 97% Purple Card -->
+          <!-- Card 4 -->
           <div
             class="h-[300px] md:h-[350px] rounded-[2rem] bg-[var(--card-purple)] flex flex-col justify-center items-center p-8 text-center shadow-xl"
             data-aos="fade-up"
@@ -1579,7 +1571,7 @@
             </p>
           </div>
 
-          <!-- Card 5: 2k+ Lime Card -->
+          <!-- Card 5 -->
           <div
             class="h-[350px] md:h-[400px] rounded-[2rem] bg-[var(--card-lime)] p-8 md:p-10 flex items-center justify-between relative overflow-hidden shadow-xl md:col-span-2"
             data-aos="fade-up"
@@ -1615,7 +1607,7 @@
             </div>
           </div>
 
-          <!-- Card 6: 80% Grey Card -->
+          <!-- Card 6 -->
           <div
             class="h-[350px] md:h-[400px] rounded-[2rem] bg-[var(--card-grey)] p-8 md:p-10 flex items-center justify-between relative overflow-hidden shadow-xl md:col-span-2"
             data-aos="fade-up"
@@ -1648,7 +1640,7 @@
     </div>
 
     <!-- ============================================================
-         TIMELINE / AWARDS SECTION (from file 3) – wrapped
+         TIMELINE / AWARDS SECTION (FIXED hover contrast)
          ============================================================ -->
     <div class="timeline-wrapper">
       <section class="max-w-5xl w-full mx-auto py-16">
@@ -1833,11 +1825,10 @@
     </div>
 
     <!-- ============================================================
-         TEAM SECTION (from file 4) – wrapped
+         TEAM SECTION
          ============================================================ -->
     <div class="team-wrapper">
       <section class="max-w-7xl mx-auto py-16">
-        <!-- Header -->
         <div class="flex justify-between items-center mb-10">
           <div
             class="header-label text-sm font-semibold uppercase tracking-widest flex items-center"
@@ -1870,7 +1861,6 @@
           </div>
         </div>
 
-        <!-- Main Heading -->
         <h2
           class="team-title text-5xl md:text-7xl font-bold leading-[1.1] mb-16 text-left w-full"
         >
@@ -1879,7 +1869,6 @@
           <span class="block">WORK.</span>
         </h2>
 
-        <!-- Cards -->
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
         >
@@ -2020,12 +2009,11 @@
     </div>
 
     <!-- ============================================================
-         MARQUEE SECTION (from file 5) – wrapped
+         MARQUEE SECTION
          ============================================================ -->
     <div class="marquee-wrapper">
       <section class="marquee-container" data-aos="fade-up">
         <div class="marquee-track">
-          <!-- Group 1 -->
           <div class="marquee-group">
             <svg
               class="sparkle-icon sparkle-small"
@@ -2057,7 +2045,6 @@
               />
             </svg>
           </div>
-          <!-- Group 2 (duplicate) -->
           <div class="marquee-group">
             <svg
               class="sparkle-icon sparkle-small"
@@ -2089,7 +2076,6 @@
               />
             </svg>
           </div>
-          <!-- Group 3 -->
           <div class="marquee-group">
             <svg
               class="sparkle-icon sparkle-small"
@@ -2121,7 +2107,6 @@
               />
             </svg>
           </div>
-          <!-- Group 4 -->
           <div class="marquee-group">
             <svg
               class="sparkle-icon sparkle-small"
@@ -2158,11 +2143,10 @@
     </div>
 
     <!-- ============================================================
-         BLOG / JOURNAL SECTION (from file 6) – wrapped
+         BLOG / JOURNAL SECTION
          ============================================================ -->
     <div class="blog-wrapper">
       <section class="max-w-7xl mx-auto py-16">
-        <!-- Header -->
         <div class="flex justify-between items-center mb-10">
           <div
             class="header-label text-sm font-semibold uppercase tracking-widest flex items-center"
@@ -2195,7 +2179,6 @@
           </div>
         </div>
 
-        <!-- Main Heading -->
         <h2
           class="blog-title text-5xl md:text-7xl font-bold leading-[1.1] mb-16 text-left w-full"
         >
@@ -2204,11 +2187,9 @@
           <span class="block">JOURNALS.</span>
         </h2>
 
-        <!-- Cards -->
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
         >
-          <!-- Card 1 -->
           <div
             class="blog-card"
             data-aos="fade-up"
@@ -2225,7 +2206,6 @@
               5 Steps to Create an Outstanding Marketing Plan
             </h3>
           </div>
-          <!-- Card 2 -->
           <div
             class="blog-card"
             data-aos="fade-up"
@@ -2242,7 +2222,6 @@
               Play to Your Strengths and Supercharge Business
             </h3>
           </div>
-          <!-- Card 3 -->
           <div
             class="blog-card"
             data-aos="fade-up"
@@ -2263,35 +2242,26 @@
       </section>
     </div>
 
-    <!-- Audio (from file 1) -->
     <audio id="clickSound" src="click.mp3"></audio>
+
     <footer class="ftrsite-footer">
       <div class="ftrfooter-grid">
-        <!-- LEFT PANEL -->
         <div class="ftrfooter-card ftrleft-panel">
-          <!-- Dotted Globe SVG Background -->
           <svg
             class="ftrglobe-decoration"
             viewBox="0 0 500 500"
             xmlns="http://www.w3.org/2000/svg"
           >
             <g fill="none" stroke-width="1.2" stroke-dasharray="2 6">
-              <!-- Globe Outer Ring -->
               <circle cx="250" cy="250" r="230" />
-
-              <!-- Latitudinal Circles -->
               <ellipse cx="250" cy="250" rx="230" ry="50" />
               <ellipse cx="250" cy="250" rx="230" ry="110" />
               <ellipse cx="250" cy="250" rx="230" ry="170" />
               <ellipse cx="250" cy="250" rx="230" ry="210" />
-
-              <!-- Longitudinal Circles (Rotated Ellipses) -->
               <ellipse cx="250" cy="250" rx="50" ry="230" />
               <ellipse cx="250" cy="250" rx="110" ry="230" />
               <ellipse cx="250" cy="250" rx="170" ry="230" />
               <ellipse cx="250" cy="250" rx="210" ry="230" />
-
-              <!-- Diagonal Perspective Rings -->
               <g transform="rotate(30 250 250)">
                 <ellipse cx="250" cy="250" rx="230" ry="90" />
                 <ellipse cx="250" cy="250" rx="90" ry="230" />
@@ -2303,7 +2273,6 @@
             </g>
           </svg>
 
-          <!-- Top Heading & CTA -->
           <div>
             <div class="ftrfooter-top-section">
               <h2 class="ftrfooter-headline">Let's<br />Start your project</h2>
@@ -2317,11 +2286,9 @@
                 </span>
               </a>
             </div>
-
             <div class="ftrfooter-divider"></div>
           </div>
 
-          <!-- Bottom Branding & Nav Pills -->
           <div class="ftrfooter-bottom-section">
             <div class="ftrbranding-group">
               <img
@@ -2338,7 +2305,6 @@
                 &copy; COPYRIGHT 2026 BY STACKLY. ALL RIGHTS RESERVED.
               </p>
             </div>
-
             <nav class="ftrnav-pills-group" aria-label="Footer Navigation">
               <a href="./index.html" class="ftrnav-pill">Home</a>
               <a href="./services.html" class="ftrnav-pill">Services</a>
@@ -2350,15 +2316,12 @@
           </div>
         </div>
 
-        <!-- RIGHT PANEL -->
         <div class="ftrfooter-card ftrright-panel">
           <div class="ftrright-panel-top">
             <h3 class="ftrsocials-heading">
               Explore the Socials<br />of STACKLY
             </h3>
-
             <div class="ftrsocial-icons-group">
-              <!-- X (Twitter) -->
               <a
                 href="./404.html"
                 class="ftrsocial-icon-link"
@@ -2370,8 +2333,6 @@
                   />
                 </svg>
               </a>
-
-              <!-- Facebook -->
               <a
                 href="./404.html"
                 class="ftrsocial-icon-link"
@@ -2383,8 +2344,6 @@
                   />
                 </svg>
               </a>
-
-              <!-- Instagram -->
               <a
                 href="./404.html"
                 class="ftrsocial-icon-link"
@@ -2396,8 +2355,6 @@
                   />
                 </svg>
               </a>
-
-              <!-- LinkedIn -->
               <a
                 href="./404.html"
                 class="ftrsocial-icon-link"
@@ -2422,7 +2379,6 @@
               </svg>
               <span>Newsletter</span>
             </div>
-
             <form class="ftrnewsletter-form" action="./404.html">
               <input
                 type="email"
@@ -2441,7 +2397,6 @@
                 </svg>
               </button>
             </form>
-
             <p class="ftrprivacy-notice">
               By subscribing, you're accepting our
               <a href="./404.html" class="ftrprivacy-link">Privacy Policy</a>.
@@ -2452,14 +2407,14 @@
     </footer>
 
     <!-- ============================================================
-         SCRIPTS (combined)
+         SCRIPTS
          ============================================================ -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-      // ---- THEME TOGGLE (from file 1) ----
+      // ---- THEME TOGGLE ----
       const themeBtn = document.querySelector(".theme-icon");
       themeBtn.addEventListener("click", () => {
         document.body.classList.toggle("dark");
@@ -2475,7 +2430,7 @@
         document.body.classList.add("dark");
       }
 
-      // ---- NAVBAR LOGIC (from file 1) ----
+      // ---- NAVBAR ----
       const ham = document.getElementById("navhamburger");
       const overlay = document.getElementById("navoverlay");
       const closeBtn = document.getElementById("navclose");
@@ -2484,21 +2439,18 @@
       function isDesktop() {
         return window.innerWidth >= 1024;
       }
-
       function openSidebar() {
         if (isDesktop()) return;
         overlay.classList.add("active");
         ham.classList.add("active");
         document.body.style.overflow = "hidden";
       }
-
       function closeSidebar() {
         if (isDesktop()) return;
         overlay.classList.remove("active");
         ham.classList.remove("active");
         document.body.style.overflow = "";
       }
-
       ham.addEventListener("click", (e) => {
         e.stopPropagation();
         if (isDesktop()) return;
@@ -2514,7 +2466,7 @@
         else nav.classList.remove("navsticky");
       });
 
-      // ---- AOS INIT (from file 1) ----
+      // ---- AOS ----
       AOS.init({
         duration: 800,
         easing: "ease-out-cubic",
@@ -2522,7 +2474,7 @@
         offset: 100,
       });
 
-      // ---- GSAP HERO ANIMATION (from file 1) ----
+      // ---- GSAP HERO ----
       gsap.from(".gsap-hero", {
         opacity: 0,
         y: 50,
@@ -2531,7 +2483,7 @@
         delay: 0.3,
       });
 
-      // ---- COUNTER LOGIC (from file 2) ----
+      // ---- COUNTER ----
       function animateCounter(element) {
         const target = +element.getAttribute("data-target");
         const suffix = element.getAttribute("data-suffix") || "";
@@ -2567,7 +2519,7 @@
       );
       counters.forEach((c) => counterObserver.observe(c));
 
-      // ---- GSAP PARALLAX ON IMAGES (from file 2) ----
+      // ---- GSAP PARALLAX ----
       gsap.registerPlugin(ScrollTrigger);
       gsap.utils.toArray(".overflow-hidden img").forEach((img) => {
         gsap.fromTo(
@@ -2583,7 +2535,7 @@
         );
       });
 
-      // ---- FOLLOW CURSOR LOGIC (from file 3) ----
+      // ---- FOLLOW CURSOR ----
       const timelineRows = document.querySelectorAll(".timeline-row");
       timelineRows.forEach((row) => {
         const floatImg = row.querySelector(".float-image");
@@ -2601,7 +2553,7 @@
         });
       });
 
-      // ---- GSAP TEAM HEADING ANIMATION (from file 4) ----
+      // ---- GSAP TEAM HEADING ----
       gsap.from(".team-title", {
         scrollTrigger: {
           trigger: ".team-title",
@@ -2612,9 +2564,6 @@
         duration: 1,
         ease: "power3.out",
       });
-
-      // ---- (Optional) re-run AOS for dynamic content ----
-      // AOS.refresh();
     </script>
   </body>
 </html>
